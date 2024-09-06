@@ -24,7 +24,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Essence\Essence;
 use ExtraFieldValue;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use SessionManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +40,7 @@ class SessionController extends AbstractController
      */
     #[Route(path: '/{sid}/about', name: 'chamilo_core_session_about')]
     public function about(
+        #[MapEntity(expr: 'repository.findDetails(id)', disabled: true)]
         Request $request,
         Session $session,
         IllustrationRepository $illustrationRepo,
