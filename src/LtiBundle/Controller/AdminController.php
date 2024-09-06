@@ -12,7 +12,6 @@ use Chamilo\LtiBundle\Entity\ExternalTool;
 use Chamilo\LtiBundle\Form\ExternalToolType;
 use Chamilo\LtiBundle\Repository\ExternalToolRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -40,7 +39,7 @@ class AdminController extends BaseController
             'tools' => $tools,
         ]);
     }
-
+//TODO : Remplacement de la fonction (le use initial a été supprimé)
     #[Route(path: '/add', name: 'chamilo_lti_admin_add')]
     public function adminAdd(Request $request): Response
     {
@@ -105,7 +104,7 @@ class AdminController extends BaseController
             ]
         );
     }
-
+//TODO : Remplacement de la fonction (le use initial a été supprimé)
     #[Route(path: '/delete/{toolId}', name: 'chamilo_lti_admin_delete', requirements: ['toolId' => '\d+'])]
     public function adminDelete(int $toolId): Response
     {

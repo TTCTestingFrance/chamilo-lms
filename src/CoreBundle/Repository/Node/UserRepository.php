@@ -473,7 +473,7 @@ class UserRepository extends ResourceRepository implements PasswordUpgraderInter
      *
      * @return int
      */
-    public function getCountUsersByUrl(AccessUrl $url)
+    public function getCountUsersByUrl(AccessUrl $url): int
     {
         return $this->createQueryBuilder('u')
             ->select('COUNT(u)')
@@ -597,7 +597,7 @@ class UserRepository extends ResourceRepository implements PasswordUpgraderInter
      *
      * @return User[]
      */
-    public function getAssignedHrmUserList(int $userId, int $urlId)
+    public function getAssignedHrmUserList(int $userId, int $urlId): array
     {
         $qb = $this->createQueryBuilder('u');
         $this->addAccessUrlQueryBuilder($urlId, $qb);
@@ -613,9 +613,10 @@ class UserRepository extends ResourceRepository implements PasswordUpgraderInter
      * as user.last_login was only implemented in 1.10 version with a default
      * value of NULL (not the last record from track_e_login).
      *
+     * @param User $user
      * @return null|TrackELogin
      */
-    public function getLastLogin(User $user)
+    public function getLastLogin(User $user): ?TrackELogin
     {
         $qb = $this->createQueryBuilder('u');
 

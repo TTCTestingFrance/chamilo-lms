@@ -27,7 +27,6 @@ use HTML_QuickForm_select;
 use OAuthConsumer;
 use OAuthRequest;
 use OAuthSignatureMethod_HMAC_SHA1;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -244,7 +243,7 @@ class CourseController extends ToolBaseController
 
         $params += $customParams;
         Utils::trimParams($params);
-
+// TODO: Remove duplicate code
         if (!empty($tool->getConsumerKey()) && !empty($tool->getSharedSecret())) {
             $consumer = new OAuthConsumer(
                 $tool->getConsumerKey(),
@@ -264,7 +263,7 @@ class CourseController extends ToolBaseController
 
             $params = $request->get_parameters();
         }
-
+// TODO: FIN Remove duplicate code
         Utils::removeQueryParamsFromLaunchUrl($tool, $params);
 
         return $this->render(

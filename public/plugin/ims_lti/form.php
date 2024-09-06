@@ -16,7 +16,11 @@ $tool = isset($_GET['id'])
     : null;
 
 if (!$tool) {
-    api_not_allowed(true);
+    try {
+        api_not_allowed(true);
+    } catch (Exception $e) {
+
+    }
 }
 
 $imsLtiPlugin = ImsLtiPlugin::create();
@@ -116,7 +120,7 @@ $params += ImsLti::substituteVariablesInCustomParams(
 );
 
 $imsLtiPlugin->trimParams($params);
-
+// TODO: Remove duplicate code
 if (!empty($tool->getConsumerKey()) && !empty($tool->getSharedSecret())) {
     $consumer = new OAuthConsumer(
         $tool->getConsumerKey(),
@@ -136,7 +140,7 @@ if (!empty($tool->getConsumerKey()) && !empty($tool->getSharedSecret())) {
 
     $params = $request->get_parameters();
 }
-
+// TODO: FIN Remove duplicate code
 $imsLtiPlugin->removeUrlParamsFromLaunchParams($tool, $params);
 ?>
 <!DOCTYPE html>

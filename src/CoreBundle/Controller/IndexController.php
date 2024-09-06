@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Chamilo\CoreBundle\Controller;
 
 use Chamilo\CoreBundle\Settings\SettingsManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -68,6 +67,7 @@ class IndexController extends BaseController
      * Toggle the student view action.
      */
     #[Route('/toggle_student_view', methods: ['GET'])]
+    // TODO: Replace Security by using symfony libraries
     #[Security("is_granted('ROLE_TEACHER')")]
     public function toggleStudentView(Request $request, SettingsManager $settingsManager): Response
     {
